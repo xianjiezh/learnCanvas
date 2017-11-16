@@ -3,6 +3,18 @@ var canvas = document.getElementById('id-canvas')
 
 var ctx = canvas.getContext('2d')
 
+var canvasWidth = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth
+
+var canvasHeight = window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight
+// hahaha 三个全屏方案 stackoverflow真牛逼
+
+canvas.width = canvasWidth
+canvas.height = canvasHeight
+
 var paiting = false
 
 var lastPoint = {
@@ -20,11 +32,11 @@ function drawCircle(x, y, radius) {
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.fill();
 } 
-function drawLine(x1, y1, x2, y2) {
+function drawLine(x1, y1, x2, y2, width) {
     ctx.beginPath()
     ctx.moveTo(x1,y1)
     ctx.lineTo(x2,y2)
-    ctx.lineWidth = 10
+    ctx.lineWidth = width
     ctx.closePath()
     ctx.stroke()
 }
@@ -37,7 +49,7 @@ canvas.onmousedown = function(down) {
         x:x,
         y:y
     }
-    drawCircle(x, y, 10)
+    drawCircle(x, y, 5)
         
 }
 
@@ -50,7 +62,7 @@ canvas.onmousemove = function(move) {
         y:y
     }
     if(paiting == true){
-        drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)        
+        drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 10)        
     }
     lastPoint = newPoint  //这句话好牛逼
 

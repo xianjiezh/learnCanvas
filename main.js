@@ -2,18 +2,22 @@
 var canvas = document.getElementById('id-canvas')
 
 var ctx = canvas.getContext('2d')
+resize()
+function resize() {
+    var canvasWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth
+    
+    var canvasHeight = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight
+    canvas.width = canvasWidth
+    canvas.height = canvasHeight
+}
+window.onresize = function() {
+    resize()
+}
 
-var canvasWidth = window.innerWidth
-|| document.documentElement.clientWidth
-|| document.body.clientWidth
-
-var canvasHeight = window.innerHeight
-|| document.documentElement.clientHeight
-|| document.body.clientHeight
-// hahaha 三个全屏方案 stackoverflow真牛逼
-
-canvas.width = canvasWidth
-canvas.height = canvasHeight
 
 var paiting = false
 

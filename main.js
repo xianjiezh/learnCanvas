@@ -2,6 +2,7 @@
 var canvas = document.getElementById('id-canvas')
 
 var ctx = canvas.getContext('2d')
+
 resize()
 function resize() {
     var canvasWidth = window.innerWidth
@@ -53,7 +54,7 @@ canvas.onmousedown = function(down) {
         x:x,
         y:y
     }
-    drawCircle(x, y, 5)
+    drawCircle(x, y, 2.5)
         
 }
 
@@ -66,7 +67,7 @@ canvas.onmousemove = function(move) {
         y:y
     }
     if(paiting == true){
-        drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 10)        
+        drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)        
     }
     lastPoint = newPoint  //这句话好牛逼
 
@@ -74,7 +75,6 @@ canvas.onmousemove = function(move) {
 
 canvas.onmouseup = function(up) {
     paiting = false
-    console.log(up)
     var x = up.clientX,
         y = up.clientY
 }

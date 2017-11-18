@@ -4,8 +4,17 @@ canvas{
 body{
     margin: 0
 }
-.actions {
-    position: absolute;
+.actions{
+    position: fixed;
     top: 20px;
     left: 20px;
+}
+.actions .brush{
+    display: none;
+}
+.actions.s .eraser{
+    display: none;
+}
+.actions.s .brush{
+    display: inline-block;
 }

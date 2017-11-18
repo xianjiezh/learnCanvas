@@ -47,8 +47,8 @@ function drawLine(x1, y1, x2, y2, width) {
 }
 
 var eraserEnabled = false
-var actions = document.getElementById('eraser')
-actions.onclick = function () {
+var movements = document.getElementById('eraser')
+movements.onclick = function () {
     eraserEnabled = !eraserEnabled
 }
 
@@ -90,4 +90,13 @@ canvas.onmouseup = function (up) {
 
     var x = up.clientX,
         y = up.clientY
+}
+
+eraser.onclick = function() {
+    eraserEnabled = true
+    actions.className = 'actions s'
+}
+brush.onclick = function() {
+    eraserEnabled = false
+    actions.className = 'actions'
 }

@@ -4,7 +4,7 @@ canvas{
 body{
     margin: 0
 }
-button{
+.actions {
     position: absolute;
     top: 20px;
     left: 20px;

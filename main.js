@@ -7,7 +7,7 @@ autoSetCanvasSize(canvas)
 
 var eraserEnabled = false
 
-listenToMouse()
+listenToUser()
 
 eraser.onclick = function () {
     eraserEnabled = true
@@ -33,11 +33,55 @@ function autoSetCanvasSize(canvas) {
         canvas.height = canvasHeight
     }
     window.onresize = function () {
-        resize()
+        resizeCanvas()
     }
 }
 //
-function listenToMouse() {
+function listenToUser() {
+
+    if (document.body.ontouchstart !== undefined) {
+        // 触屏设备
+        canvas.ontouchstart = function (start) {
+            using = true
+            var x = start.touches[0].clientX
+            var y = start.touches[0].clientY
+            if (eraserEnabled) {
+                ctx.clearRect(x - 3, y - 3, 6, 6)
+            } else {
+                drawCircle(x, y, 2.5)
+            }
+            var lastPoint = {
+                x: undefined,
+                y: undefined
+            }
+
+            var newPoint = {
+                x: undefined,
+                y: undefined
+            }
+        }
+        canvas.ontouchmove = function (move) {
+            var x = move.touches[0].clientX,
+                y = move.touches[0].clientY
+            newPoint = {
+                x: x,
+                y: y
+            }
+
+            if (using) {
+                if (eraserEnabled) {
+                    ctx.clearRect(x - 3, y - 3, 6, 6)
+                } else {
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)
+                }
+            }
+            lastPoint = newPoint //这句话好牛逼
+        }
+        canvas.ontouchend = function() {
+            using = false
+        }
+    } else {
+    // 非触屏设备
     var using = false
     canvas.onmousedown = function (down) {
 
@@ -55,7 +99,7 @@ function listenToMouse() {
         x: undefined,
         y: undefined
     }
-    
+
     var newPoint = {
         x: undefined,
         y: undefined
@@ -80,10 +124,9 @@ function listenToMouse() {
     }
     canvas.onmouseup = function (up) {
         using = false
-
-        var x = up.clientX,
-            y = up.clientY
     }
+
+}
 }
 function drawCircle(x, y, radius) {
     ctx.beginPath();

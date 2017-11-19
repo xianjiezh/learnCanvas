@@ -141,3 +141,23 @@ function drawLine(x1, y1, x2, y2, width) {
     ctx.closePath()
     ctx.stroke()
 }
+var black = document.getElementById('black')
+var red = document.getElementById('red')
+var green = document.getElementById('green')
+var yellow = document.getElementById('yellow')
+black.onclick = function () {
+    ctx.fillStyle = 'black'
+    ctx.strokeStyle = 'black'
+}
+red.onclick = function() {
+    ctx.fillStyle = 'black'
+    ctx.strokeStyle = 'red'
+}
+green.onclick = function() {
+    ctx.fillStyle = 'green'
+    ctx.strokeStyle = 'green'
+}
+yellow.onclick = function() {
+    ctx.fillStyle = 'yellow'
+    ctx.strokeStyle = 'yellow'
+}

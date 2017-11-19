@@ -1,6 +1,4 @@
-canvas{
 
-}
 body{
     margin: 0
 }
@@ -18,4 +16,29 @@ body{
 }
 .actions.s .brush{
     display: inline-block;
+}
+ol{
+    position: fixed;
+    top: 0;
+    left: 50px;
+}
+ol>li{
+    list-style: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin: 10px 30px;
+    display: inline-block;
+}
+.black{
+    background-color: black;
+}
+.red{
+    background-color: red;
+}
+.yellow{
+    background-color: yellow;
+}
+.green{
+    background-color: green;
 }

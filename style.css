@@ -2,18 +2,7 @@
 body{
     margin: 0
 }
-.actions{
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 20px;
-}
-.actions .brush{
-    display: none;
-}
-.actions.s .eraser{
-    display: none;
-}
+
 .actions.s .brush{
     display: inline-block;
 }
@@ -24,10 +13,10 @@ ol{
 }
 ol>li{
     list-style: none;
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
-    margin: 10px 30px;
+    margin: 10px 10px;
     display: inline-block;
 }
 .black{
@@ -41,4 +30,16 @@ ol>li{
 }
 .green{
     background-color: green;
+}
+.icon{
+}
+#brush{
+    position: fixed;
+    top: 25px;
+    left: 10px;
+}
+#eraser{
+    position: fixed;
+    top: 25px;
+    left: 45px;  
 }

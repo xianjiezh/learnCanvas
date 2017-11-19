@@ -11,11 +11,10 @@ listenToUser()
 
 eraser.onclick = function () {
     eraserEnabled = true
-    actions.className = 'actions s'
+    
 }
 brush.onclick = function () {
     eraserEnabled = false
-    actions.className = 'actions'
 }
 
 // function
@@ -29,8 +28,8 @@ function autoSetCanvasSize(canvas) {
         var canvasHeight = window.innerHeight
             || document.documentElement.clientHeight
             || document.body.clientHeight
-        canvas.width = canvasWidth - 10
-        canvas.height = canvasHeight - 10
+        canvas.width = canvasWidth - 20
+        canvas.height = canvasHeight - 25
     }
     window.onresize = function () {
         resizeCanvas()

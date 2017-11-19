@@ -7,13 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>canvas画板</title>
     <link rel="stylesheet" href="style.css">
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="actions" id="actions">
-        <button id="brush" class="brush">画笔</button>
-        <button id="eraser" class="eraser">橡皮擦</button>
-    </div>
+    <svg class="icon" id="brush" aria-hidden="true">
+        <use xlink:href="#icon-huabi"></use>
+    </svg>
+    <svg class="icon" id="eraser" aria-hidden="true">
+        <use xlink:href="#icon-xiangpica_s"></use>
+    </svg>
+
     <canvas id="id-canvas"></canvas>
     <ol>
         <li id="black" class="black"></li>
@@ -22,6 +34,7 @@
         <li id="yellow" class="yellow"></li>
     </ol>
     <script src="main.js"></script>
+    <script src="http://at.alicdn.com/t/font_479903_mudckdzti1p833di.js"></script>
 </body>
 
 </html>

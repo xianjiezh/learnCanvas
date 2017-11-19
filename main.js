@@ -9,14 +9,17 @@ var eraserEnabled = false
 
 listenToUser()
 
+var earaer = document.getElementById('eraser')
+var brush = document.getElementById('brush')
 eraser.onclick = function () {
     eraserEnabled = true
-    
+    console.log('橡皮擦启用了')
 }
 brush.onclick = function () {
     eraserEnabled = false
 }
 
+colorfulPen()
 // function
 function autoSetCanvasSize(canvas) {
     resizeCanvas()
@@ -140,23 +143,27 @@ function drawLine(x1, y1, x2, y2, width) {
     ctx.closePath()
     ctx.stroke()
 }
-var black = document.getElementById('black')
-var red = document.getElementById('red')
-var green = document.getElementById('green')
-var yellow = document.getElementById('yellow')
-black.onclick = function () {
-    ctx.fillStyle = 'black'
-    ctx.strokeStyle = 'black'
+
+function colorfulPen(){
+    var black = document.getElementById('black')
+    var red = document.getElementById('red')
+    var green = document.getElementById('green')
+    var yellow = document.getElementById('yellow')
+    black.onclick = function () {
+        ctx.fillStyle = 'black'
+        ctx.strokeStyle = 'black'
+    }
+    red.onclick = function() {
+        ctx.fillStyle = 'black'
+        ctx.strokeStyle = 'red'
+    }
+    green.onclick = function() {
+        ctx.fillStyle = 'green'
+        ctx.strokeStyle = 'green'
+    }
+    yellow.onclick = function() {
+        ctx.fillStyle = 'yellow'
+        ctx.strokeStyle = 'yellow'
+    }
 }
-red.onclick = function() {
-    ctx.fillStyle = 'black'
-    ctx.strokeStyle = 'red'
-}
-green.onclick = function() {
-    ctx.fillStyle = 'green'
-    ctx.strokeStyle = 'green'
-}
-yellow.onclick = function() {
-    ctx.fillStyle = 'yellow'
-    ctx.strokeStyle = 'yellow'
-}
+

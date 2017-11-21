@@ -5,9 +5,6 @@ body{
     position: fixed;
 }
 
-.actions.s .brush{
-    display: inline-block;
-}
 ol{
     position: fixed;
     top: 0;
@@ -37,23 +34,18 @@ ol>li{
     background-color: green;
     cursor: pointer;
 }
-
+.icon{
+    position: fixed;
+    padding: 22px 7px 0 5px;
+}
 #brush{
-    width: 27px;
-    height: 27px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 25px 20px 0 7px;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
 }
 #eraser{
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    top: 0;
-    left: 0;  
-    margin: 25px 5px 0 47px;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
-    border: 1px solid black;
+    margin-left: 32px;
 }

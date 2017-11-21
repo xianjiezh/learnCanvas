@@ -7,7 +7,7 @@ autoSetCanvasSize(canvas)
 
 var eraserEnabled = false
 
-listenToUser()
+listenToUser(canvas)
 
 var earaer = document.getElementById('eraser')
 var brush = document.getElementById('brush')
@@ -39,16 +39,17 @@ function autoSetCanvasSize(canvas) {
     }
 }
 //
-function listenToUser() {
+function listenToUser(canvas) {
     var using = false
-    var lastPoint = {
-        x: undefined,
-        y: undefined
-    }
+
     if (document.body.ontouchstart !== undefined) {
+        var lastPoint = {
+            x: undefined,
+            y: undefined
+        }
         // 触屏设备
         canvas.ontouchstart = function (start) {
-            console.log('这里是触屏设备')
+            console.log('开始摸了')
             using = true
             var x = start.touches[0].clientX
             var y = start.touches[0].clientY
@@ -57,44 +58,52 @@ function listenToUser() {
             } else {
                 drawCircle(x, y, 2.5)
                 var lastPoint = {
-                    x: undefined,
-                    y: undefined
+                    x: x,
+                    y: y
                 }
             }
         }
         canvas.ontouchmove = function (move) {
             var x = move.touches[0].clientX,
                 y = move.touches[0].clientY
-            var newPoint = {
-                x: x,
-                y: y
-            }
 
             if (using) {
                 if (eraserEnabled) {
                     ctx.clearRect(x - 3, y - 3, 6, 6)
                 } else {
+                    var newPoint = {
+                        'x': x,
+                        'y': y
+                    }
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)
                 }
             }
             lastPoint = newPoint //这句话好牛逼
         }
         canvas.ontouchend = function (end) {
+            console.log('不摸了')
             using = false
         }
     } else {
         // 非触屏设备
+        var lastPoint = {
+            x: undefined,
+            y: undefined
+        }
         canvas.onmousedown = function (down) {
 
             using = true
             var x = down.clientX,
                 y = down.clientY
             if (eraserEnabled) {
-                ctx.clearRect(x - 5, y - 5, 10, 10)
+                ctx.clearRect(x - 8, y - 8, 16, 16)
             } else {
                 drawCircle(x, y, 2.5)
+                var lastPoint = {
+                    'x': x,
+                    'y': y
+                }
             }
-
         }
 
         canvas.onmousemove = function (move) {
@@ -115,12 +124,14 @@ function listenToUser() {
             }
             lastPoint = newPoint //这句话好牛逼
         }
-        canvas.onmouseup = function (up) {
-            using = false
-        }
-
+    canvas.onmouseup = function (up) {
+        using = false
     }
+
 }
+}
+
+/********************/
 function drawCircle(x, y, radius) {
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, 2 * Math.PI);

@@ -2,6 +2,7 @@
 body{
     margin: 0;
     overflow: hidden;
+    position: fixed;
 }
 
 .actions.s .brush{
@@ -22,15 +23,19 @@ ol>li{
 }
 .black{
     background-color: black;
+    cursor: pointer;
 }
 .red{
     background-color: red;
+    cursor: pointer;
 }
 .yellow{
     background-color: yellow;
+    cursor: pointer;
 }
 .green{
     background-color: green;
+    cursor: pointer;
 }
 
 #brush{
@@ -39,8 +44,8 @@ ol>li{
     position: absolute;
     top: 0;
     left: 0;
-    margin-top: 25px;
-    margin-left: 10px;
+    margin: 25px 20px 0 7px;
+    cursor: pointer;
 }
 #eraser{
     width: 32px;
@@ -48,6 +53,7 @@ ol>li{
     position: absolute;
     top: 0;
     left: 0;  
-    margin-top: 25px;
-    margin-left: 35px;
+    margin: 25px 5px 0 47px;
+    cursor: pointer;
+    border: 1px solid black;
 }

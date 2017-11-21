@@ -31,8 +31,8 @@ function autoSetCanvasSize(canvas) {
         var canvasHeight = window.innerHeight
             || document.documentElement.clientHeight
             || document.body.clientHeight
-        canvas.width = canvasWidth 
-        canvas.height = canvasHeight 
+        canvas.width = canvasWidth
+        canvas.height = canvasHeight
     }
     window.onresize = function () {
         resizeCanvas()
@@ -40,10 +40,15 @@ function autoSetCanvasSize(canvas) {
 }
 //
 function listenToUser() {
-
+    var using = false
+    var lastPoint = {
+        x: undefined,
+        y: undefined
+    }
     if (document.body.ontouchstart !== undefined) {
         // 触屏设备
         canvas.ontouchstart = function (start) {
+            console.log('这里是触屏设备')
             using = true
             var x = start.touches[0].clientX
             var y = start.touches[0].clientY
@@ -51,21 +56,16 @@ function listenToUser() {
                 ctx.clearRect(x - 3, y - 3, 6, 6)
             } else {
                 drawCircle(x, y, 2.5)
-            }
-            var lastPoint = {
-                x: undefined,
-                y: undefined
-            }
-
-            var newPoint = {
-                x: undefined,
-                y: undefined
+                var lastPoint = {
+                    x: undefined,
+                    y: undefined
+                }
             }
         }
         canvas.ontouchmove = function (move) {
             var x = move.touches[0].clientX,
                 y = move.touches[0].clientY
-            newPoint = {
+            var newPoint = {
                 x: x,
                 y: y
             }
@@ -79,56 +79,47 @@ function listenToUser() {
             }
             lastPoint = newPoint //这句话好牛逼
         }
-        canvas.ontouchend = function() {
+        canvas.ontouchend = function (end) {
             using = false
         }
     } else {
-    // 非触屏设备
-    var using = false
-    canvas.onmousedown = function (down) {
+        // 非触屏设备
+        canvas.onmousedown = function (down) {
 
-        using = true
-        var x = down.clientX,
-            y = down.clientY
-        if (eraserEnabled) {
-            ctx.clearRect(x - 3, y - 3, 6, 6)
-        } else {
-            drawCircle(x, y, 2.5)
-        }
-
-    }
-    var lastPoint = {
-        x: undefined,
-        y: undefined
-    }
-
-    var newPoint = {
-        x: undefined,
-        y: undefined
-    }
-    canvas.onmousemove = function (move) {
-        // console.log(move)
-        var x = move.clientX,
-            y = move.clientY
-        newPoint = {
-            x: x,
-            y: y
-        }
-
-        if (using) {
+            using = true
+            var x = down.clientX,
+                y = down.clientY
             if (eraserEnabled) {
-                ctx.clearRect(x - 3, y - 3, 6, 6)
+                ctx.clearRect(x - 5, y - 5, 10, 10)
             } else {
-                drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)
+                drawCircle(x, y, 2.5)
             }
-        }
-        lastPoint = newPoint //这句话好牛逼
-    }
-    canvas.onmouseup = function (up) {
-        using = false
-    }
 
-}
+        }
+
+        canvas.onmousemove = function (move) {
+            // console.log(move)
+            var x = move.clientX,
+                y = move.clientY
+            var newPoint = {
+                x: x,
+                y: y
+            }
+
+            if (using) {
+                if (eraserEnabled) {
+                    ctx.clearRect(x - 3, y - 3, 6, 6)
+                } else {
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)
+                }
+            }
+            lastPoint = newPoint //这句话好牛逼
+        }
+        canvas.onmouseup = function (up) {
+            using = false
+        }
+
+    }
 }
 function drawCircle(x, y, radius) {
     ctx.beginPath();
@@ -144,7 +135,7 @@ function drawLine(x1, y1, x2, y2, width) {
     ctx.stroke()
 }
 
-function colorfulPen(){
+function colorfulPen() {
     var black = document.getElementById('black')
     var red = document.getElementById('red')
     var green = document.getElementById('green')
@@ -153,15 +144,15 @@ function colorfulPen(){
         ctx.fillStyle = 'black'
         ctx.strokeStyle = 'black'
     }
-    red.onclick = function() {
-        ctx.fillStyle = 'black'
+    red.onclick = function () {
+        ctx.fillStyle = 'red'
         ctx.strokeStyle = 'red'
     }
-    green.onclick = function() {
+    green.onclick = function () {
         ctx.fillStyle = 'green'
         ctx.strokeStyle = 'green'
     }
-    yellow.onclick = function() {
+    yellow.onclick = function () {
         ctx.fillStyle = 'yellow'
         ctx.strokeStyle = 'yellow'
     }

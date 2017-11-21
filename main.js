@@ -31,8 +31,8 @@ function autoSetCanvasSize(canvas) {
         var canvasHeight = window.innerHeight
             || document.documentElement.clientHeight
             || document.body.clientHeight
-        canvas.width = canvasWidth - 20
-        canvas.height = canvasHeight - 25
+        canvas.width = canvasWidth 
+        canvas.height = canvasHeight 
     }
     window.onresize = function () {
         resizeCanvas()

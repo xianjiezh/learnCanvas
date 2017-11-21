@@ -124,11 +124,11 @@ function listenToUser(canvas) {
             }
             lastPoint = newPoint //这句话好牛逼
         }
-    canvas.onmouseup = function (up) {
-        using = false
-    }
+        canvas.onmouseup = function (up) {
+            using = false
+        }
 
-}
+    }
 }
 
 /********************/

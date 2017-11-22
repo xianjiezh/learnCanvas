@@ -9,6 +9,7 @@ var eraserEnabled = false
 
 listenToUser(canvas)
 
+
 var earaer = document.getElementById('eraser')
 var brush = document.getElementById('brush')
 eraser.onclick = function () {
@@ -75,7 +76,7 @@ function listenToUser(canvas) {
                         'x': x,
                         'y': y
                     }
-                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, range.value)
                 }
             }
             lastPoint = newPoint // 这句话好牛逼
@@ -122,7 +123,7 @@ function listenToUser(canvas) {
                 if (eraserEnabled) {
                     ctx.clearRect(x - 3, y - 3, 6, 6)
                 } else {
-                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, range.value)
                     lastPoint = newPoint
                 }
 
@@ -148,7 +149,7 @@ download.onclick = function() {
     var a = document.createElement('a')
     document.body.appendChild(a)
     a.href = url
-    a.download = 'xxx'
+    a.download = 'canvas-picture'
     a.click()
 }
 /********************/

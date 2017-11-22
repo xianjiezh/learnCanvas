@@ -40,33 +40,28 @@ function autoSetCanvasSize(canvas) {
 }
 //
 function listenToUser(canvas) {
-    var using = false
+    
 
     if (document.body.ontouchstart !== undefined) {
+        var using = false
         var lastPoint = {
             x: undefined,
             y: undefined
         }
         // 触屏设备
         canvas.ontouchstart = function (start) {
-            console.log('开始摸了')
-            using = true
+            console.log(using)
             var x = start.touches[0].clientX
             var y = start.touches[0].clientY
             if (eraserEnabled) {
                 ctx.clearRect(x - 3, y - 3, 6, 6)
-            } else {
-                drawCircle(x, y, 2.5)
-                var lastPoint = {
-                    x: x,
-                    y: y
-                }
-            }
+            } 
         }
         canvas.ontouchmove = function (move) {
+            using = true
+            
             var x = move.touches[0].clientX,
                 y = move.touches[0].clientY
-
             if (using) {
                 if (eraserEnabled) {
                     ctx.clearRect(x - 3, y - 3, 6, 6)
@@ -78,20 +73,26 @@ function listenToUser(canvas) {
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)
                 }
             }
-            lastPoint = newPoint //这句话好牛逼
+            lastPoint = newPoint // 这句话好牛逼
+            console.log(using)
+            
         }
         canvas.ontouchend = function (end) {
-            console.log('不摸了')
             using = false
+            lastPoint = {
+                'x': undefined,
+                'y': undefined
+            }   // 把上一次的move事件里面的x，y清除掉
+            console.log(using)
         }
     } else {
+        var using = false
         // 非触屏设备
         var lastPoint = {
             x: undefined,
             y: undefined
         }
         canvas.onmousedown = function (down) {
-
             using = true
             var x = down.clientX,
                 y = down.clientY
@@ -117,12 +118,18 @@ function listenToUser(canvas) {
                     ctx.clearRect(x - 3, y - 3, 6, 6)
                 } else {
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)
+                    lastPoint = newPoint
                 }
+
             }
-            lastPoint = newPoint //这句话好牛逼
+
         }
         canvas.onmouseup = function (up) {
             using = false
+            lastPoint = {
+                x: undefined,
+                y: undefined
+            }
         }
 
     }

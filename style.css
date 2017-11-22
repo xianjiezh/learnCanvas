@@ -74,3 +74,8 @@ ol>li{
 #download{
     padding-left: 8px;
 }
+.color{
+    position: fixed;
+    top: 251px;
+    left:12px;
+}

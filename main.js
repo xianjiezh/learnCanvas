@@ -60,7 +60,7 @@ function listenToUser(canvas) {
             var x = start.touches[0].clientX
             var y = start.touches[0].clientY
             if (eraserEnabled) {
-                ctx.clearRect(x - 3, y - 3, 6, 6)
+                ctx.clearRect(x - range.value/2, y - range.value/2, range.value, range.value)
             } 
         }
         canvas.ontouchmove = function (move) {
@@ -70,7 +70,7 @@ function listenToUser(canvas) {
                 y = move.touches[0].clientY
             if (using) {
                 if (eraserEnabled) {
-                    ctx.clearRect(x - 3, y - 3, 6, 6)
+                    ctx.clearRect(x - range.value/2, y - range.value/2, range.value, range.value)
                 } else {
                     var newPoint = {
                         'x': x,
@@ -103,9 +103,9 @@ function listenToUser(canvas) {
             var x = down.clientX,
                 y = down.clientY
             if (eraserEnabled) {
-                ctx.clearRect(x - 8, y - 8, 16, 16)
+                ctx.clearRect(x - range.value/2, y - range.value/2, range.value, range.value)
             } else {
-                drawCircle(x, y, 2.5)
+                drawCircle(x, y, range.value/2)
 
             }
         }
@@ -121,7 +121,7 @@ function listenToUser(canvas) {
 
             if (using) {
                 if (eraserEnabled) {
-                    ctx.clearRect(x - 3, y - 3, 6, 6)
+                    ctx.clearRect(x - range.value/2, y - range.value/2, range.value, range.value)
                 } else {
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, range.value)
                     lastPoint = newPoint
@@ -166,7 +166,8 @@ function drawLine(x1, y1, x2, y2, width) {
     ctx.closePath()
     ctx.stroke()
 }
-
+ctx.fillStyle = color.value
+ctx.strokeStyle = color.value
 function colorfulPen() {
     var black = document.getElementById('black')
     var red = document.getElementById('red')
@@ -187,6 +188,11 @@ function colorfulPen() {
     yellow.onclick = function () {
         ctx.fillStyle = 'yellow'
         ctx.strokeStyle = 'yellow'
+    }
+    color.onchange = function(){
+        ctx.fillStyle = color.value
+        ctx.strokeStyle = color.value
+        console.log(color.value)
     }
 }
 

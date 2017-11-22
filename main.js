@@ -143,7 +143,14 @@ function listenToUser(canvas) {
 clear.onclick = function() {
     ctx.clearRect(0,0,canvas.width,canvas.height)
 }
-
+download.onclick = function() {
+    var url = canvas.toDataURL('image/png')
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.href = url
+    a.download = 'xxx'
+    a.click()
+}
 /********************/
 function drawCircle(x, y, radius) {
     ctx.beginPath();

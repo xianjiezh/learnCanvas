@@ -71,3 +71,6 @@ ol>li{
     transform: scale(1.1);
     transition: all .3s
 }
+#download{
+    padding-left: 8px;
+}

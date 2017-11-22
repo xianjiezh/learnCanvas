@@ -18,29 +18,46 @@ ol>li{
     display: inline-block;
 }
 .black{
+    position: fixed;
+    top:55px;
+    left: 13px;
     background-color: black;
     cursor: pointer;
 }
 .red{
+    position: fixed;
+    top:100px;
+    left: 13px;
     background-color: red;
     cursor: pointer;
 }
 .yellow{
+    position: fixed;
+    top:150px;
+    left: 13px;
     background-color: yellow;
     cursor: pointer;
 }
 .green{
+    position: fixed;
+    top:200px;
+    left: 13px;
     background-color: green;
     cursor: pointer;
 }
 .actions{
     position: fixed;
-    top: 25px;
-    left: 20px;
+    top: 10px;
+    left: 17px;
 
 }
 .actions svg{
-    width: 2em;
-    height: 2em;
+    width: 2.5em;
+    height: 2.5em;
     cursor: pointer;
+}
+.actions #clear{
+    width: 2.2em;
+    height: 2.2em;
+    margin-left: 3px;
 }

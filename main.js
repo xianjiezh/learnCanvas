@@ -135,6 +135,10 @@ function listenToUser(canvas) {
     }
 }
 
+clear.onclick = function() {
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+}
+
 /********************/
 function drawCircle(x, y, radius) {
     ctx.beginPath();

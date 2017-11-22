@@ -19,14 +19,18 @@
 </head>
 
 <body>
-    <svg class="icon" id="eraser" aria-hidden="true">
-        <use xlink:href="#icon-xiangpica1"></use>
-    </svg>
-    <svg class="icon" id="brush" aria-hidden="true">
-        <use xlink:href="#icon-huabi"></use>
-    </svg>
+
 
     <canvas id="id-canvas"></canvas>
+    <div class="actions" id="actions">
+        <svg class="icon" id="brush">
+            <use xlink:href="#icon-huabi"></use>
+        </svg>
+        <svg class="icon" id="eraser">
+            <use xlink:href="#icon-xiangpica1"></use>
+        </svg>
+    </div>
+    <!--这个svg要设定在canvas后面，否则会引发点击事件出bug-->
     <ol>
         <li id="black" class="black"></li>
         <li id="red" class="red"></li>

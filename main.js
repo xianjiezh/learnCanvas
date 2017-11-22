@@ -99,10 +99,7 @@ function listenToUser(canvas) {
                 ctx.clearRect(x - 8, y - 8, 16, 16)
             } else {
                 drawCircle(x, y, 2.5)
-                var lastPoint = {
-                    'x': x,
-                    'y': y
-                }
+
             }
         }
 
@@ -111,8 +108,8 @@ function listenToUser(canvas) {
             var x = move.clientX,
                 y = move.clientY
             var newPoint = {
-                x: x,
-                y: y
+                'x': x,
+                'y': y
             }
 
             if (using) {
@@ -140,8 +137,8 @@ function drawCircle(x, y, radius) {
 function drawLine(x1, y1, x2, y2, width) {
     ctx.beginPath()
     ctx.moveTo(x1, y1)
-    ctx.lineTo(x2, y2)
     ctx.lineWidth = width
+    ctx.lineTo(x2, y2)
     ctx.closePath()
     ctx.stroke()
 }

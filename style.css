@@ -4,11 +4,10 @@ body{
     overflow: hidden;
     position: fixed;
 }
-
 ol{
     position: fixed;
     top: 0;
-    left: 50px;
+    left: 100px;
 }
 ol>li{
     list-style: none;
@@ -34,18 +33,14 @@ ol>li{
     background-color: green;
     cursor: pointer;
 }
-.icon{
+.actions{
     position: fixed;
-    padding: 22px 7px 0 5px;
+    top: 25px;
+    left: 20px;
+
 }
-#brush{
-    width: 35px;
-    height: 35px;
+.actions svg{
+    width: 2em;
+    height: 2em;
     cursor: pointer;
-}
-#eraser{
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    margin-left: 32px;
 }

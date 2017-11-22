@@ -13,10 +13,15 @@ var earaer = document.getElementById('eraser')
 var brush = document.getElementById('brush')
 eraser.onclick = function () {
     eraserEnabled = true
-    console.log('橡皮擦启用了')
+    eraser.classList.add('active')
+    brush.classList.remove('active')
+    
 }
 brush.onclick = function () {
     eraserEnabled = false
+    brush.classList.add('active')
+    eraser.classList.remove('active')
+    
 }
 
 colorfulPen()

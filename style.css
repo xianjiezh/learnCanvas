@@ -61,3 +61,13 @@ ol>li{
     height: 2.2em;
     margin-left: 3px;
 }
+.actions #brush.active{
+    fill: red;
+    transform: scale(1.1);
+    transition: all .3s
+}
+.actions #eraser.active{
+    fill: red;
+    transform: scale(1.1);
+    transition: all .3s
+}

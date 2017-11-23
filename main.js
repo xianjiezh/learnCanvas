@@ -189,9 +189,9 @@ function colorfulPen() {
         brush.style.fill = 'green'
     }
     yellow.onclick = function () {
-        ctx.fillStyle = 'yellow'
-        ctx.strokeStyle = 'yellow'
-        brush.style.fill = 'yellow'
+        ctx.fillStyle = '#FFCE43'
+        ctx.strokeStyle = '#FFCE43'
+        brush.style.fill = '#FFCE43'
     }
     color.onchange = function(){
         ctx.fillStyle = color.value

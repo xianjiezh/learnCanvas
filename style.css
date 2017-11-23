@@ -62,12 +62,12 @@ ol>li{
     margin-left: 3px;
 }
 .actions #brush.active{
-    fill: red;
+    fill: black;
     transform: scale(1.1);
     transition: all .3s
 }
 .actions #eraser.active{
-    fill: red;
+    fill: black;
     transform: scale(1.1);
     transition: all .3s
 }

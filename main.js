@@ -176,23 +176,28 @@ function colorfulPen() {
     black.onclick = function () {
         ctx.fillStyle = 'black'
         ctx.strokeStyle = 'black'
+        brush.style.fill = 'black'
     }
     red.onclick = function () {
         ctx.fillStyle = 'red'
         ctx.strokeStyle = 'red'
+        brush.style.fill = 'red'
     }
     green.onclick = function () {
         ctx.fillStyle = 'green'
         ctx.strokeStyle = 'green'
+        brush.style.fill = 'green'
     }
     yellow.onclick = function () {
         ctx.fillStyle = 'yellow'
         ctx.strokeStyle = 'yellow'
+        brush.style.fill = 'yellow'
     }
     color.onchange = function(){
         ctx.fillStyle = color.value
         ctx.strokeStyle = color.value
-        console.log(color.value)
+        brush.style.fill = color.value
+        console.log(brush.style.fill)
     }
 }
 

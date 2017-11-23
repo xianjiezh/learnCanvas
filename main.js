@@ -103,7 +103,7 @@ function listenToUser(canvas) {
             var x = down.clientX,
                 y = down.clientY
             if (eraserEnabled) {
-                ctx.clearRect(x - range.value/2, y - range.value/2, range.value, range.value)
+                ctx.clearRect(x - range.value, y - range.value, range.value*2, range.value*2)
             } else {
                 drawCircle(x, y, range.value/2)
 
@@ -121,7 +121,7 @@ function listenToUser(canvas) {
 
             if (using) {
                 if (eraserEnabled) {
-                    ctx.clearRect(x - range.value/2, y - range.value/2, range.value, range.value)
+                    ctx.clearRect(x - range.value, y - range.value, range.value*2, range.value*2)
                 } else {
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, range.value)
                     lastPoint = newPoint

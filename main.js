@@ -124,8 +124,9 @@ function listenToUser(canvas) {
                         x2: x2,
                         y2: y2
                     }
-                    drawLine(lastPoint.x2, lastPoint.y2, newPoint.x2, newPoint.y2, range.value)
-                    lastPoint = newPoint
+                    drawLine(lastPoint.x1, lastPoint.y1, newPoint.x2, newPoint.y2, range.value)
+                    lastPoint.x1 = newPoint.x2
+                    lastPoint.y1 = newPoint.y2
                 }
 
             }

@@ -100,30 +100,31 @@ function listenToUser(canvas) {
         }
         canvas.onmousedown = function (down) {
             using = true
-            var x = down.clientX,
-                y = down.clientY
             if (eraserEnabled) {
-                ctx.clearRect(x - range.value, y - range.value, range.value*2, range.value*2)
+                ctx.clearRect(x1 - range.value, y1 - range.value, range.value*2, range.value*2)
             } else {
-                drawCircle(x, y, range.value/2)
-
+                console.log('aaaaa')
+                var x1 = down.clientX,
+                y1 = down.clientY
+                drawCircle(x1, y1, range.value/2)
             }
         }
 
         canvas.onmousemove = function (move) {
             // console.log(move)
-            var x = move.clientX,
-                y = move.clientY
-            var newPoint = {
-                'x': x,
-                'y': y
-            }
+            var x2 = move.clientX,
+                y2 = move.clientY
+            
 
             if (using) {
                 if (eraserEnabled) {
-                    ctx.clearRect(x - range.value, y - range.value, range.value*2, range.value*2)
+                    ctx.clearRect(x2 - range.value, y2 - range.value, range.value*2, range.value*2)
                 } else {
-                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, range.value)
+                    var newPoint = {
+                        x2: x2,
+                        y2: y2
+                    }
+                    drawLine(lastPoint.x2, lastPoint.y2, newPoint.x2, newPoint.y2, range.value)
                     lastPoint = newPoint
                 }
 
@@ -133,8 +134,8 @@ function listenToUser(canvas) {
         canvas.onmouseup = function (up) {
             using = false
             lastPoint = {
-                x: undefined,
-                y: undefined
+                x1: undefined,
+                y1: undefined
             }
         }
 

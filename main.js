@@ -41,6 +41,7 @@ function autoSetCanvasSize(canvas) {
         canvas.height = canvasHeight
     }
     window.onresize = function () {
+        confirm('缩放窗口会导致之前的改动没有保存',)
         resizeCanvas()
     }
 }
@@ -80,7 +81,6 @@ function listenToUser(canvas) {
                 }
             }
             lastPoint = newPoint // 这句话好牛逼
-            console.log(using)
             
         }
         canvas.ontouchend = function (end) {
@@ -145,6 +145,10 @@ clear.onclick = function() {
     ctx.clearRect(0,0,canvas.width,canvas.height)
 }
 download.onclick = function() {
+    downLoad(canvas)
+}
+/********************/
+function downLoad(){
     var url = canvas.toDataURL('image/png')
     var a = document.createElement('a')
     document.body.appendChild(a)
@@ -152,7 +156,6 @@ download.onclick = function() {
     a.download = 'canvas-picture'
     a.click()
 }
-/********************/
 function drawCircle(x, y, radius) {
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, 2 * Math.PI);

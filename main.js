@@ -16,13 +16,13 @@ eraser.onclick = function () {
     eraserEnabled = true
     eraser.classList.add('active')
     brush.classList.remove('active')
-    
+
 }
 brush.onclick = function () {
     eraserEnabled = false
     brush.classList.add('active')
     eraser.classList.remove('active')
-    
+
 }
 
 colorfulPen()
@@ -41,13 +41,13 @@ function autoSetCanvasSize(canvas) {
         canvas.height = canvasHeight
     }
     window.onresize = function () {
-        confirm('缩放窗口会导致之前的改动没有保存',)
+        confirm('缩放窗口会导致之前的改动没有保存', )
         resizeCanvas()
     }
 }
 //
 function listenToUser(canvas) {
-    
+
 
     if (document.body.ontouchstart !== undefined) {
         var using = false
@@ -61,17 +61,17 @@ function listenToUser(canvas) {
             var x = start.touches[0].clientX
             var y = start.touches[0].clientY
             if (eraserEnabled) {
-                ctx.clearRect(x - range.value/2, y - range.value/2, range.value, range.value)
-            } 
+                ctx.clearRect(x - range.value / 2, y - range.value / 2, range.value, range.value)
+            }
         }
         canvas.ontouchmove = function (move) {
             using = true
-            
+
             var x = move.touches[0].clientX,
                 y = move.touches[0].clientY
             if (using) {
                 if (eraserEnabled) {
-                    ctx.clearRect(x - range.value/2, y - range.value/2, range.value, range.value)
+                    ctx.clearRect(x - range.value / 2, y - range.value / 2, range.value, range.value)
                 } else {
                     var newPoint = {
                         'x': x,
@@ -81,7 +81,7 @@ function listenToUser(canvas) {
                 }
             }
             lastPoint = newPoint // 这句话好牛逼
-            
+
         }
         canvas.ontouchend = function (end) {
             using = false
@@ -100,13 +100,10 @@ function listenToUser(canvas) {
         }
         canvas.onmousedown = function (down) {
             using = true
-            if (eraserEnabled) {
-                ctx.clearRect(x1 - range.value, y1 - range.value, range.value*2, range.value*2)
-            } else {
-                console.log('aaaaa')
-                var x1 = down.clientX,
+            var x1 = down.clientX,
                 y1 = down.clientY
-                drawCircle(x1, y1, range.value/2)
+            if (eraserEnabled) {
+                ctx.clearRect(x1 - range.value, y1 - range.value, range.value * 2, range.value * 2)
             }
         }
 
@@ -114,11 +111,11 @@ function listenToUser(canvas) {
             // console.log(move)
             var x2 = move.clientX,
                 y2 = move.clientY
-            
+
 
             if (using) {
                 if (eraserEnabled) {
-                    ctx.clearRect(x2 - range.value, y2 - range.value, range.value*2, range.value*2)
+                    ctx.clearRect(x2 - range.value, y2 - range.value, range.value * 2, range.value * 2)
                 } else {
                     var newPoint = {
                         x2: x2,
@@ -143,14 +140,14 @@ function listenToUser(canvas) {
     }
 }
 
-clear.onclick = function() {
-    ctx.clearRect(0,0,canvas.width,canvas.height)
+clear.onclick = function () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
 }
-download.onclick = function() {
+download.onclick = function () {
     downLoad(canvas)
 }
 /********************/
-function downLoad(){
+function downLoad() {
     var url = canvas.toDataURL('image/png')
     var a = document.createElement('a')
     document.body.appendChild(a)
@@ -198,7 +195,7 @@ function colorfulPen() {
         ctx.strokeStyle = '#FFCE43'
         brush.style.fill = '#FFCE43'
     }
-    color.onchange = function(){
+    color.onchange = function () {
         ctx.fillStyle = color.value
         ctx.strokeStyle = color.value
         brush.style.fill = color.value
